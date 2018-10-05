@@ -15,6 +15,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getShowPopup();
+
+    }
+
+    private void getShowPopup() {
         setContentView(R.layout.activity_main);
         final Dialog dialog;
         dialog = new Dialog(MainActivity.this);
@@ -24,24 +30,15 @@ public class MainActivity extends AppCompatActivity {
                 Color.TRANSPARENT
         ));
         dialog.setContentView(R.layout.dialog_layout);
-        Button bnClick = (Button) findViewById(R.id.bnClick);
         TextView close = (TextView) dialog.findViewById(R.id.close);
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(true);
-        bnClick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
-
+        dialog.show();
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 dialog.dismiss();
             }
         });
-
-
     }
 }
